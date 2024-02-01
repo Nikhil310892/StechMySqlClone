@@ -2,6 +2,11 @@
   - hosts: 34.218.81.199
     become: true
     tasks:
+      - name: Make sure pymysql is present
+        become: true # needed if the other tasks are not played as root
+        pip:
+          name: pymysql
+          state: present
         
       - name: create a backup
         mysql_db:
