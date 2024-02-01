@@ -14,7 +14,7 @@
           state: dump
           target: /home/cloud_user/PROD.sql
           login_host: 172.31.99.81
-          login_user: cloud_user
+          login_user: root
           login_password: Exadata2017
  
  
@@ -27,6 +27,6 @@
           state: import
           target: /home/cloud_user/PROD.sql
           login_host: 172.31.108.133
-          login_user: cloud_user
+          login_user: root
           login_password: 'Exadata2017'
         delegate_to: 52.42.30.33
