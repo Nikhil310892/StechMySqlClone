@@ -13,7 +13,7 @@
           name: PROD
           state: dump
           target: /home/cloud_user/PROD.sql
-          login_host: localhost
+          login_host: 34.218.81.199
           login_user: cloud_user
           login_password: Exadata2017
  
