@@ -1,5 +1,5 @@
 ---
-  - hosts: MySqlProd
+  - hosts: 34.218.81.199
     become: true
     tasks:
         
@@ -24,4 +24,4 @@
           login_host: 172.31.108.133
           login_user: root
           login_password: 'Exadata2017'
-        delegate_to: MySqlDev
+        delegate_to: 52.42.30.33
