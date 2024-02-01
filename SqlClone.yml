@@ -1,0 +1,27 @@
+---
+  - hosts: MySqlProd
+    become: true
+    tasks:
+        
+      - name: create a backup
+        mysql_db:
+          name: PROD
+          state: dump
+          target: /home/cloud_user/PROD.sql
+          login_host: localhost
+          login_user: root
+          login_password: Exadata2017
+ 
+ 
+      - name: copy the database to the development server
+        raw: rsync /home/cloud_user/PROD.sql cloud_user@172.31.108.133:/home/cloud_user/PROD.sql
+ 
+      - name: import the database
+        mysql_db:
+          name: DEV
+          state: import
+          target: /home/cloud_user/PROD.sql
+          login_host: 172.31.108.133
+          login_user: root
+          login_password: 'Exadata2017'
+        delegate_to: MySqlDev
