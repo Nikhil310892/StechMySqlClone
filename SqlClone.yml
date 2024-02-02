@@ -19,7 +19,7 @@
  
  
       - name: copy the database to the development server
-        raw: rsync /home/cloud_user/PROD.sql cloud_user@172.31.108.133:/home/cloud_user/PROD.sql
+        raw: rsync /home/cloud_user/PROD.sql cloud_user@35.87.112.86:/home/cloud_user/PROD.sql
  
       - name: import the database
         mysql_db:
