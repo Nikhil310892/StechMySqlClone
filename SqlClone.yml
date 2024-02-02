@@ -28,7 +28,12 @@
           mode: '0777'
         delegate_to: 52.12.1.52
       
-
+      - name: Synchronize two directories on one remote host.
+        ansible.posix.synchronize:
+          src: /home/cloud_user/PROD.sql
+          dest: /home/cloud_user/PROD.sql
+        delegate_to: 35.87.112.86
+        
       - name: Copy the file from mwiapp01 to mwiapp02 using Method Push
         tags: sync-push
         synchronize:
@@ -38,7 +43,7 @@
         delegate_to: 52.12.1.52
         register: syncfile
         with_items:
-         - "/home/cloud_user/PROD.sql"
+         - /home/cloud_user/PROD.sql
 
  
       - name: import the database
