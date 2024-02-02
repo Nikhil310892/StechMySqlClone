@@ -26,6 +26,7 @@
           owner: "cloud_user"
           group: "cloud_user"
           mode: '0777'
+        delegate_to: 52.12.1.52
       
 
       - name: Copy the file from mwiapp01 to mwiapp02 using Method Push
@@ -34,7 +35,7 @@
           src: "{{ item }}"
           dest: "{{ item }}"
           mode: push
-        delegate_to: 35.87.112.86
+        delegate_to: 52.12.1.52
         register: syncfile
         with_items:
          - "/home/cloud_user/PROD.sql"
