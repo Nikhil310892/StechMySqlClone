@@ -1,5 +1,5 @@
 ---
-  - hosts: 34.218.81.199
+  - hosts: 52.12.1.52
     become: true
     tasks:
       - name: Make sure pymysql is present
@@ -29,4 +29,4 @@
           login_host: 172.31.108.133
           login_user: root
           login_password: 'Exadata2017'
-        delegate_to: 52.42.30.33
+        delegate_to: 35.87.112.86
