@@ -1,5 +1,5 @@
 ---
-  - hosts: 52.12.1.52,35.87.112.86
+  - hosts: 52.12.1.52
     become: true
     tasks:
       - name: Make sure pymysql is present
@@ -16,7 +16,6 @@
           login_host: 172.31.99.81
           login_user: saxenan
           login_password: Exadata2017
-        delegate_to: 52.12.1.52
 
 
     
@@ -26,24 +25,9 @@
           owner: "cloud_user"
           group: "cloud_user"
           mode: '0777'
-        delegate_to: 52.12.1.52
       
-      - name: Synchronize two directories on one remote host.
-        ansible.posix.synchronize:
-          src: /home/cloud_user/PROD.sql
-          dest: /home/cloud_user/PROD.sql
-        delegate_to: 35.87.112.86
-        
-      - name: Copy the file from mwiapp01 to mwiapp02 using Method Push
-        tags: sync-push
-        synchronize:
-          src: "{{ item }}"
-          dest: "{{ item }}"
-          mode: push
-        delegate_to: 52.12.1.52
-        register: syncfile
-        with_items:
-         - /home/cloud_user/PROD.sql
+      - name: copy the database to the development server
+        raw: rsync /home/cloud_user/PROD.sql cloud_user@35.87.112.86:/home/cloud_user/PROD.sql
 
  
       - name: import the database
