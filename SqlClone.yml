@@ -25,6 +25,13 @@
           owner: "cloud_user"
           group: "cloud_user"
           mode: '0777'
+
+      - name: Transfer file from ServerA to ServerB
+        synchronize:
+          src: /home/cloud_user/PROD.sql
+          dest: /home/cloud_user/PROD.sql
+         mode: pull
+        delegate_to: 54.188.168.151
       
       - name: copy the database to the development server
         raw: rsync /home/cloud_user/PROD.sql cloud_user@54.188.168.151:/home/cloud_user/PROD.sql
