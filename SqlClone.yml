@@ -1,5 +1,5 @@
 ---
-  - hosts: 52.12.1.52
+  - hosts: 34.221.25.127
     become: true
     tasks:
       - name: Make sure pymysql is present
@@ -27,7 +27,7 @@
           mode: '0777'
       
       - name: copy the database to the development server
-        raw: rsync /home/cloud_user/PROD.sql cloud_user@35.87.112.86:/home/cloud_user/PROD.sql
+        raw: rsync /home/cloud_user/PROD.sql cloud_user@54.188.168.151:/home/cloud_user/PROD.sql
 
  
       - name: import the database
@@ -38,4 +38,4 @@
           login_host: 172.31.108.133
           login_user: saxenan
           login_password: 'Exadata2017'
-        delegate_to: 35.87.112.86
+        delegate_to: 54.188.168.151
