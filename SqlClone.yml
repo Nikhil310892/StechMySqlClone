@@ -32,6 +32,7 @@
           dest: "/home/cloud_user/PROD.sql"
           mode: pull
         delegate_to: 35.87.7.46
+        become: false
 
  
       - name: import the database
