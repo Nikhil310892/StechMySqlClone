@@ -1,5 +1,5 @@
 ---
-  - hosts: 35.90.207.105
+  - hosts: 52.41.76.38
     become: true
     tasks:
       - name: Make sure pymysql is present
@@ -31,7 +31,7 @@
           src: "/home/cloud_user/PROD.sql"
           dest: "/home/cloud_user/PROD.sql"
           mode: pull
-        delegate_to: 35.87.7.46
+        delegate_to: 34.212.120.255
         become: false
 
  
@@ -43,4 +43,4 @@
           login_host: 172.31.108.133
           login_user: saxenan
           login_password: 'Exadata2017'
-        delegate_to: 35.87.7.46
+        delegate_to: 34.212.120.255
