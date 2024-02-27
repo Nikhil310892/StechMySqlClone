@@ -1,5 +1,5 @@
 ---
-  - hosts: 52.41.76.38
+  - hosts: 54.191.15.52
     become: true
     tasks:
       - name: Make sure pymysql is present
@@ -10,10 +10,10 @@
         
       - name: create a backup
         mysql_db:
-          name: PROD
+          name: EMPLOYEESDB
           state: dump
           target: /home/cloud_user/PROD.sql
-          login_host: 172.31.99.81
+          login_host: 172.31.110.40
           login_user: saxenan
           login_password: Exadata2017
 
@@ -26,13 +26,13 @@
           group: "cloud_user"
           mode: '0777'
 
-      - name: Transfer file from ServerA to ServerB
-        synchronize:
-          src: "/home/cloud_user/PROD.sql"
-          dest: "/home/cloud_user/PROD.sql"
-          mode: pull
-        delegate_to: 34.212.120.255
-        become: false
+      # - name: Transfer file from ServerA to ServerB
+      #   synchronize:
+      #     src: "/home/cloud_user/PROD.sql"
+      #     dest: "/home/cloud_user/PROD.sql"
+      #     mode: pull
+      #   delegate_to: 34.212.120.255
+      #   become: false
 
  
       - name: import the database
@@ -40,7 +40,6 @@
           name: DEV
           state: import
           target: /home/cloud_user/PROD.sql
-          login_host: 172.31.108.133
+          login_host: 172.31.110.40
           login_user: saxenan
           login_password: 'Exadata2017'
-        delegate_to: 34.212.120.255
